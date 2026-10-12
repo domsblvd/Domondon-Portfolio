@@ -14,7 +14,6 @@ body {
     background-color: #f1f2f0; /* Light off-white background matching the target */
     line-height: 1.5;
     width: 100%;
-    height: 4316px;
     margin: 0 auto; 
     overflow-x: hidden; /* Centers the content horizontally */
 
@@ -701,7 +700,6 @@ border-top: 1px solid #CFCFCA;
 .projects-container {
     width: 100%;
     max-width: 836px;
-    min-height: 1216px;
     margin: 0 auto;          /* centers the content on wide screens */
     display: flex;
     flex-direction: column;
@@ -772,8 +770,7 @@ letter-spacing: -2.736px;
 /* Two cards side by side: 406 + 24 + 406 = 836 */
 .gallery-container {
     display: grid;                      /* your file also has "display: flex" and "inline-grid" here, so remove both */
-    width: 100%;
-    height: 1116px;                     /* 1052 from Figma + 64 top padding */
+    width: 100%;   
     padding-top: 64px;
     grid-template-columns: repeat(2, 406px);
     grid-template-rows: repeat(3, 318.69px);
@@ -913,4 +910,94 @@ font-size: 17px;
 font-style: normal;
 font-weight: 500;
 line-height: 25.5px; /* 150% */;
+}
+
+/* ---------- Tablet & phone ---------- */
+@media (max-width: 900px) {
+  header.main { padding: 0 24px; }
+
+  .home {
+    flex-direction: column;
+    padding: 48px 24px;
+    gap: 56px;
+  }
+  .home-container { width: 100%; }
+  .home-text > * { padding-right: 0; }
+  .tagline { width: 100%; max-width: 407px; }
+  .cta-link { padding: 0; align-self: flex-start; }
+
+  .hero-panel { display: none; }  /* its left offset is built for desktop */
+
+  .home-image-container {
+    width: 100%;
+    max-width: 340px;
+    margin: 0 auto 20px;
+  }
+  .arch-frame { height: 430px; }
+  .internship-badge { left: 10px; }
+  .decorative-outline { right: -10px; top: -10px; }
+
+  .about-container {
+    grid-template-columns: 1fr;
+    padding: 80px 24px;
+    row-gap: 48px;
+  }
+  .about-left,
+  .about-right { grid-column: 1; grid-row: auto; }
+  .about-right { height: auto; }
+  .about-left-text { font-size: 40px; line-height: 1.05; }
+  .stats-row {
+    height: auto;
+    padding: 24px 0;
+    grid-template-rows: auto;
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .projects-section { padding: 72px 24px; }
+  .projects-head {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+  }
+  .brief { width: 100%; }
+  .gallery-text { font-size: 40px; line-height: 1.1; }
+  .gallery-container {
+    height: auto;
+    grid-template-columns: 1fr;
+    grid-template-rows: none;
+    row-gap: 32px;
+    padding-top: 32px;
+  }
+  .gallery-projects,
+  .project-thumb { width: 100%; }
+}
+
+@media (max-width: 560px) {
+  header.main { height: 68px; padding: 0 16px; }
+  .logo-name { display: none; }          /* badge only, saves space */
+  .nav-links { gap: 18px; }
+  .nav-links a:nth-child(3) { display: none; }  /* hides "Journey" until it has a page */
+  .contact-btn { padding: 8px 16px; }
+
+  .home-firstname {
+    font-size: 64px;
+    line-height: 1;
+    letter-spacing: -2px;
+  }
+  .home-lastname {
+    font-size: 56px;
+    line-height: 1.1;
+    letter-spacing: -2px;
+  }
+  .about-left-text { font-size: 34px; }
+  .about-right1 { font-size: 19px; line-height: 1.4; }
+  .stat-number { font-size: 32px; }
+
+  .track-text { font-size: 22px; }       /* smaller marquee text */
+  .skills-banner { padding: 16px 0; }
+}
+
+/* Touch screens can't hover, so show the "View project" pill always */
+@media (hover: none) {
+  .view-pill { opacity: 1; transform: none; }
 }
