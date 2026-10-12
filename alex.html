@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="en-US">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name ="viewport" content="width=device-width"/>
+    <link href="style.css" rel="stylesheet"/>
+    <title>alex | portfolio</title>
+</head>
+<body>
+    <header id="site-header" class="site-header">
+        <span class="header-dot"></span>
+        <a href="#" class="header-link">Alex&ensp;/&ensp;/&ensp;Portfolio v.1.0</a>
+        <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="primary-navigation">
+            <span></span>
+            <span></span>
+            <span></span>
+            <span class="sr-only">Open navigation menu</span>
+        </button>
+        <nav id="primary-navigation">
+            <ul>
+                <li><a href="#about">[&emsp;ABOUT&emsp;]</a></li>
+                <li><a href="#interests">[&emsp;INTERESTS&emsp;]</a></li>
+                <li><a href="#experiences">[&emsp;EXPERIENCES&emsp;]</a></li>
+            </ul>
+        </nav>
+        <a href="#contact" class="cta-button">Run contact.exe</a>
+    </header>
+    
+    <main>
+        <div class="hero-status-bar">
+            <p class="hsb-title">BS Information Technology / / Developers Committee Portfolio</p>
+            <p class="hsb-status">Status: your_status_here</p>
+        </div>
+        <section class="hero">
+            <p class="section-label" style="display: inline;">01&ensp;/&ensp;/&ensp;INDEX </p>
+            <p style="display: inline; font-weight: 700">&mdash;&mdash;</p>
+            <p class="name-label">&emsp;Alexis De Paz</p>
+            <h1 class="main-heading">Your heading here.</h1>
+            <p class="hero-paragraph">Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloremque, harum dolore nostrum maxime dolor doloribus esse atque perspiciatis. Est suscipit non dolores reprehenderit possimus ipsum illum omnis, voluptatem temporibus. Aliquam!</p>
+            <div class="title-bar">
+                <p>some clever title here</p>
+                <span class="close-dot"></span>
+                <span class="minimize-dot"></span>
+            </div>
+            <div class="box">
+                <p class="box-subtitle">[01_CORE_LANGUAGES]</p>
+                <p class="box-desc">C++, Java, Arduino</p>
+            </div>
+            <div class="box box--closed">
+                <p class="box-subtitle">[02_SOMETHING]</p>
+                <p class="box-desc">Something...</p>
+            </div> 
+        </section>
+        
+        <section id="about" class="about-section">
+            <div class="about-text">
+                <p class="section-label">02&ensp;/&ensp;/&ensp;About Me</p>
+                <h2 class="subheading">Your first subheading</h2>
+                <p class="section-paragraph">Lorem ipsum dolor sit amet consectetur adipisicing elit. Optio quis voluptatum aliquam tenetur harum nesciunt cum iusto vero officia aspernatur dignissimos, perferendis eligendi ratione vitae unde modi accusantium alias? Facere!</p>
+            </div>
+            <div class="about-box">
+                <div class="titlebox">
+                    <span class="close-dot"></span>
+                    <span class="minimize-dot"></span>
+                </div>
+                <div class="about-box-section"></div>     
+            </div>         
+        </section>
+        <section id="interests">
+            <p class="section-label">03&ensp;/&ensp;/&ensp;Interests</p>
+            <h2 class="subheading">Things I'm curious about</h2>
+            <div class="interests-container">
+                <div class="interests-box1">
+                    <div class="image-container">
+                        <div><p>SYS_LOG_01</p></div>
+                        <img src="images/harrison-broadbent-fZB51omnY_Y-unsplash.jpg">
+                    </div>
+                    
+                    <div class="tags-container">
+                        <div>Microcontroller</div>
+                        <div>Robotics</div>
+                    </div>
+                    <div>
+                        <h3>something</h3>
+                        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Commodi tenetur ad quo perferendis, tempora necessitatibus ut. Odit quasi illum ex soluta consectetur architecto minus, quidem qui a laborum assumenda saepe.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    <div class="dark-band">
+        <section id="experiences">
+            <p class="bottom-section-label">04&ensp;/&ensp;/&ensp;Experiences</p>
+            <h2 class="bottom-subheading">Your third subheading</h2>
+            <p class="bottom-section-paragraph">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Vitae numquam possimus deserunt ipsam maiores maxime accusamus, quisquam illo nesciunt consequuntur quis et, nam esse exercitationem voluptatum nisi quae amet cupiditate.</p>
+        </section>
+    </div>
+    <footer>
+        <section id="contact" class="footer-border">
+            <div class="contact-bg">
+                <p class="bottom-section-label contact-label">/&ensp;/&ensp;Contact</p>
+                <h2 class="bottom-subheading contact-heading">Execute <br>CONTACT_</h2>
+                <a href="mailto:depazalexis455@gmail.com" class="mail-button">PING ME A MESSAGE
+                    <span class="mail-arrow" aria-hidden="true">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </span>
+                </a>
+            </div>
+            <p class="footer-paragraph">alexis de paz / / available for projects</p>
+        </section>
+    </footer>
+    <script>
+        const menuToggle = document.querySelector(".menu-toggle");
+        const navigation = document.querySelector("#primary-navigation");
+
+        function closeMenu() {
+            menuToggle.setAttribute("aria-expanded", "false");
+            menuToggle.querySelector(".sr-only").textContent = "Open navigation menu";
+        }
+
+        menuToggle.addEventListener("click", () => {
+            const isOpen = menuToggle.getAttribute("aria-expanded") === "true";
+            menuToggle.setAttribute("aria-expanded", String(!isOpen));
+            menuToggle.querySelector(".sr-only").textContent = isOpen
+                ? "Open navigation menu"
+                : "Close navigation menu";
+        });
+
+        navigation.querySelectorAll("a").forEach((link) => {
+            link.addEventListener("click", closeMenu);
+        });
+
+        document.addEventListener("click", (event) => {
+            if (!navigation.contains(event.target) && !menuToggle.contains(event.target)) {
+                closeMenu();
+            }
+        });
+
+        document.addEventListener("keydown", (event) => {
+            if (event.key === "Escape") {
+                closeMenu();
+                menuToggle.focus();
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,916 @@
+/* Base Resets */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', sans-serif;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: #f1f2f0; /* Light off-white background matching the target */
+    line-height: 1.5;
+    width: 100%;
+    height: 4316px;
+    margin: 0 auto; 
+    overflow-x: hidden; /* Centers the content horizontally */
+
+}
+
+/* --- Header Styles --- */
+header.main {
+    display: flex;
+    width: 100%;
+    height: 84px;
+    margin: 0 auto;
+    padding: 0 80px;
+    justify-content: space-between;
+    align-items: center;
+    
+    position: sticky;
+    top: 0px !important;
+    margin-top: 0px !important;
+    z-index: 100;
+    
+    background-color: rgba(248, 248, 246, 0.85); 
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.06);
+
+    transition: height 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+header.main.scrolled {
+    height: 68px;
+    background-color: rgba(248, 248, 246, 0.95);
+    box-shadow: 0 4px 20px rgba(43, 63, 224, 0.1);
+}   
+
+/* Logo Area */
+.logo-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.logo-badge {
+    display: flex;
+    width: 42px;
+    height: 42px;
+    align-items: center;
+    justify-content: center;
+    border-radius: 12px;
+    background: #2B3FE0;
+    color: #FFF;
+    font-family: Inter;
+    font-size: 13px;
+    font-style: normal;
+    font-weight: 900;
+    letter-spacing: -0.6px;
+    transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+    animation: logo-drop 0.7s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+}
+
+.logo-wrapper:hover .logo-badge {
+   transform: scale(1.12) rotate(-6deg);
+}
+
+@keyframes logo-drop {
+    from { opacity: 0; transform: translateY(-20px) scale(0.6); }
+    to   { opacity: 1; transform: none; }
+}
+
+.logo-name {
+    text-decoration: none;
+    color: #151517;
+    font-weight: 600;
+    font-size: 16px;
+    position: relative;
+}
+
+.logo-name::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -4px;
+    width: 100%;
+    height: 2px;
+    background: #2B3FE0;
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 0.3s ease;
+}
+
+.logo-wrapper:hover .logo-name::after {
+    transform: scaleX(1);
+    transform-origin: left;
+}   
+
+/* Navigation Area */
+.nav-links {
+    display: flex;
+    align-items: center; /* Updated from flex-start to center so the button aligns vertically */
+    gap: 34.825px; /* Preserves your exact original spacing */
+}
+
+.nav-links a {
+    color: #5F5F63; /* Preserves your original grey text */
+    font-family: Inter;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 19.5px; /* 150% */
+    letter-spacing: 0.26px;
+    text-decoration: none;
+    transition: color 0.3s ease; /* Adds a smooth fade for the hover effect */
+}
+
+.nav-links a:not(.contact-btn) {
+    position: relative;
+    padding: 6px 0;
+}
+
+.nav-links a:not(.contact-btn)::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 2px;
+    background: #2B3FE0;
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 0.3s ease;
+}
+
+.nav-links a:not(.contact-btn):hover::after {
+    transform: scaleX(1);
+    transform-origin: left;
+}
+
+.nav-links a:not(.contact-btn):hover {
+    color: #2B3FE0; /* Text turns brand blue when hovered */
+}
+
+/* The solid Contact button */
+.contact-btn {
+    background-color: #2B3FE0;
+    color: #ffffff !important; /* Overrides the standard grey */
+    padding: 10px 24px;
+    border-radius: 50px; /* Creates the modern pill shape */
+    font-weight: 600; /* Slightly bolder for emphasis */
+    transition: all 0.3s ease;
+    box-shadow: 0 0 0 0 rgba(43, 63, 224, 0.4);
+}
+
+.contact-btn:hover {
+    background-color: #1a2a9c; /* Darkens on hover */
+    transform: translateY(-2px); /* Slight lift effect */
+    box-shadow: 0 8px 24px rgba(43, 63, 224, 0.35);
+}
+
+/* --- Hero Section Styles --- */
+.hero {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+}
+
+.hero::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='56' height='100' viewBox='0 0 56 100'%3E%3Cpath d='M28 66L0 50L0 16L28 0L56 16L56 50L28 66L28 100' fill='none' stroke='%232B3FE0' stroke-opacity='0.3' stroke-width='1.5'/%3E%3Cpath d='M28 0L28 34L0 50L0 84L28 100L56 84L56 50L28 34' fill='none' stroke='%232B3FE0' stroke-opacity='0.3' stroke-width='1.5'/%3E%3C/svg%3E");
+    background-size: 84px 150px;
+    -webkit-mask-image: linear-gradient(to top right, #000 0%, #000 20%, transparent 55%);
+    mask-image: linear-gradient(to top right, #000 0%, #000 20%, transparent 55%);
+    pointer-events: none;
+    z-index: 0;
+    animation: honey-drift 15s linear infinite;
+}
+
+@keyframes honey-breathe {
+    0%, 100% { opacity: 0.75; }   /* was 0.5 */
+    50%      { opacity: 1; }
+    to { background-position: 84px 150px; }
+}
+@keyframes honey-drift {
+    to { background-position: 84px 150px; }
+}
+
+.hero-panel {
+    position: absolute;
+    top: -60px;                    /* cancels .home's top padding, so the panel starts at the hero's top edge */
+    bottom: -60px;                 /* reaches the blue banner */
+    left: calc(100% - 360px);      /* starts slightly inside the photo's left edge */
+    right: calc(50% - 50vw);       /* runs to the right edge of the screen */
+    background: #DCDDD8;
+    border-radius: 0 0 0 260px;    /* big curve at the bottom-left only */
+    z-index: -1;                   /* behind the photo and text, above the honeycomb */
+}
+
+.hero::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(
+        circle 260px at var(--x, 75%) var(--y, 45%),
+        rgba(43, 63, 224, 0.18) 0%,
+        transparent 70%
+    );
+    pointer-events: none;
+    z-index: 0;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
+.hero.is-active::after {
+    opacity: 1;
+}
+
+.home {
+    position: relative;
+    z-index: 1;               /* keeps content above the honeycomb */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1011px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 60px 0;
+}
+
+.home-container {
+     flex: 1;
+
+}
+
+.home-text > * {
+    padding-right: 40px;
+        opacity: 0;
+    transform: translateY(20px);
+    animation: fade-up 1s ease forwards;
+}
+.home-text > *:nth-child(2) { animation-delay: 0.3s; }
+.home-text > *:nth-child(3) { animation-delay: 0.4s; }
+.home-text > *:nth-child(4) { animation-delay: 0.5s; }
+
+@keyframes fade-up {
+    to { opacity: 1; transform: none; }
+}
+
+.home-desit{
+color: #2B3FE0;
+font-family: Inter;
+font-size: 50px;
+font-style: normal;
+font-weight: 600;
+line-height: 18px; /* 150% */
+letter-spacing: 2.4px;
+text-transform: uppercase;
+}
+
+.home-firstname {
+   color: #151517;
+    font-family: "Alex Brush";
+    font-size: 90px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 65.471px; /* 94% */
+    letter-spacing: -4.527px;
+}
+
+.home-lastname {
+    color: #2B3FE0;
+    font-family: "Inter";
+    font-size: 95x; /* Scaled down from 100px */
+    font-style: normal;
+    font-weight: 700;
+    line-height: 88px; /* Adjusted to match new font size */
+    letter-spacing: -4.527px;
+}
+
+.tagline{
+ width: 407px;
+ color: #5F5F63;
+ font-family: Inter;
+ font-size: 16px;
+ font-style: normal;
+ font-weight: 400;
+ line-height: 26.4px; /* 165% */
+ display: flex;
+ padding: 34px 0 28px 0;
+ flex-direction: column;
+ align-items: flex-start;
+}
+
+.cta-link{
+display: flex;
+padding: 1.891px 268.422px 0 0;
+align-items: center;
+align-self: stretch;
+color: #151517;
+font-family: Inter;
+font-size: 16px;
+font-style: normal;
+font-weight: 500;
+line-height: 21px; /* 150% */
+text-decoration: none;
+}
+.cta-link::after {
+    content: "↓"; /* You can swap this for →, ←, or ↑ */
+    font-weight: 400;
+    transition: transform 0.3s ease; /* Prepares it for a smooth hover animation */
+    margin-left: 8px; /* Adds a little space between the text and the arrow */
+}
+
+/* Bonus: Makes the arrow bounce down when you hover over the link */
+.cta-link:hover::after {
+    transform: translateY(4px); 
+}   
+
+.home-text h4 {
+    color: #2c52ed;
+    letter-spacing: 2px;
+    font-size: 12px;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+}   
+
+/* Container for the right side */
+.home-image-container {
+    position: relative;
+    width: 390px; /* A balanced middle-ground width */
+    margin-top: -15px; /* A softer lift that won't break the layout */
+    margin-bottom: 20px;
+}
+
+
+.home-image-container::before {
+    width: 56px;
+    height: 64px;
+    top: 50px;
+    left: -40px;
+}
+
+.home-image-container::after {
+    content: "";
+    position: absolute;
+    top: 20px;
+    left: -4px;
+    width: 30px;
+    height: 34px;
+    background: linear-gradient(135deg, #AAB4FF, #2B3FE0), rgba(43, 63, 224, 0.18);;
+    clip-path: polygon(50% 0, 100% 25%, 100% 75%, 50% 100%, 0 75%, 0 25%);
+    z-index: 3;
+    animation: float 4s ease-in-out infinite reverse;
+}
+
+@keyframes float {
+    50% { transform: translateY(-14px); }
+}
+
+
+/* 1. FIXED ARCH FRAME */
+.arch-frame {
+    position: relative;
+    width: 100%;
+    height: 490px; /* Scaled proportionally to the 390px width */
+    border-radius: 200px 200px 24px 24px; 
+    overflow: hidden; 
+    z-index: 2;
+}
+
+/* 2. FIXED IMAGE (Replaces your old ::after) */
+.arch-frame img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* This entirely fixes the stretching issue! */
+    filter: grayscale(100%);
+    display: block;
+    transform: scale(1.15); 
+     transition: filter 0.5s ease, transform 0.5s ease;
+}
+
+.arch-frame:hover img {
+    filter: grayscale(0%);
+    transform: scale(1.2);
+}
+
+/* 3. FIXED BLUE OUTLINE (Replaces your old ::before) */
+.decorative-outline {
+    position: absolute;
+    top: -16px; /* Tighter offset looks more deliberate */
+    right: -16px;
+    width: 100%;
+    height: 260px; /* Adjusted to fit the new height perfectly */
+    border-top: 1.5px solid #1230e3;
+    border-right: 1.5px solid #1230e3;
+    border-radius: 200px 200px 0 0;
+    z-index: 1; 
+    pointer-events: none;
+}
+
+/* 4. OVERHANGING BADGE */
+.internship-badge {
+    position: absolute;
+    bottom: 35px; 
+    left: -35px; /* Negative value pulls it outside the frame to the left */
+    background: #ffffff;
+    padding: 8px 16px 8px 10px; 
+    border-radius: 50px;
+    font-size: 13px;
+    font-weight: 600;
+    color: #1a1a1a;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    z-index: 3; /* Keeps badge above everything */
+}
+
+/* Circle behind the blue dot */
+.badge-icon-wrapper {
+    background-color: #d0d7fb;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.internship-badge .dot {
+    width: 10px;
+    height: 10px;
+    background-color: #1230e3;
+    border-radius: 50%;
+    animation: pulse 1s infinite;
+}
+
+@keyframes pulse {
+    0%   { box-shadow: 0 0 0 0 rgba(18, 48, 227, 0.5); }
+    70%  { box-shadow: 0 0 0 10px rgba(18, 48, 227, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(18, 48, 227, 0); }
+}
+
+/* 5. FOOTER TEXT */
+.image-footer {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 16px;
+    font-size: 11px;
+    font-weight: 700;
+    color: #888;
+    letter-spacing: 1px;
+}
+
+.skills-banner {
+    width: 100%;
+    background-color: #2B3FE0;
+    padding: 24px 0;
+    overflow: hidden;
+    white-space: nowrap; /* Forces everything to stay on one line */
+   
+}
+
+/* 2. The moving track */
+.skill-track {
+    display: inline-flex;
+    width: max-content; /* Critical: Tells the browser the exact width to animate */
+    animation: scroll-marquee 20s linear infinite; 
+}
+
+/* 3. The text groups */
+.track-text {
+    color: #F8F8F6;
+    display: inline-flex;
+    align-items: center;
+    font-family: Inter;
+    font-size: 30.745px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 46.118px; /* 150% */
+    letter-spacing: -1.23px;
+    
+}
+
+/* 4. Your custom stars (Your exact code) */
+.star {
+    color: #AAB4FF;
+    font-size: 18.447px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 27.671px; 
+    letter-spacing: -1.23px;
+    
+    /* ADD THIS LINE: Creates a 15px gap on the left and right of every star */
+    margin: 0 15px; 
+}
+
+/* 5. The Animation */
+@keyframes scroll-marquee {
+    0% { transform: translateX(-50%); }
+    100% { transform: translateX(0%); }
+}
+
+/* --- ABOUT ME SECTION --- */
+.about-section {
+    width: 100%;
+    /* Preserves your exact top/right/bottom/left padding */
+    background: #F8F8F6;
+    scroll-margin-top: 84px;
+}
+
+/* Creates the 50/50 two-column split */
+.about-container {
+    display: grid;
+    max-width: 1050px; /* Changed from fixed 'width' to 'max-width' for responsiveness */
+    margin: 0 auto; /* THE FIX: Centers the entire block on your screen */
+    padding: 130px 40px; /* Adjusts top/bottom breathing room */
+    column-gap: 100px;
+    
+    /* Uses flexible fractions instead of rigid 417px / 308px limits */
+    grid-template-columns: 1.2fr 1fr; 
+}
+
+/* --- LEFT COLUMN STYLES --- */
+.section-label {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    color: #2B3FE0; /* Your Brand Blue */
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    margin-bottom: 24px;
+}
+
+.label-line {
+    width: 30px;
+    height: 1px;
+    background-color: #2B3FE0;
+}
+
+.about-left{
+display: flex;
+flex-direction: column;
+align-items: flex-start;
+align-self: stretch;
+grid-row: 1 / span 1;
+grid-column: 1 / span 1;
+justify-self: stretch;
+}
+
+.about-left-text {
+    color: #151517;
+font-family: Inter;
+font-size: 49.75px;
+font-style: normal;
+font-weight: 700;
+line-height: 51.74px; /* 104% */
+letter-spacing: -2.736px;
+}
+
+/* --- RIGHT COLUMN STYLES --- */
+.about-right{
+display: flex;
+height: 497px;
+flex-direction: column;
+align-items: flex-start;
+align-self: end;
+grid-row: 1 / span 1;
+grid-column: 2 / span 1;
+justify-self: stretch;
+}
+
+.about-right1 {
+color: #151517;
+font-family: Inter;
+font-size: 22px;
+font-style: normal;
+font-weight: 500;
+line-height: 31.9px; /* 145% */ 
+}
+
+.about-right2 {
+color: #5F5F63;
+font-family: Inter;
+font-size: 16px;
+font-style: normal;
+font-weight: 400;
+line-height: 28px; /* 175% */
+}
+
+.about-right p {
+    font-size: 16px;
+    color: #5F5F63; /* Matches your grey nav text */
+    line-height: 1.7;
+    margin-bottom: 40px;
+}
+
+
+/* --- STATS GRID --- */
+
+.stats-row {
+display: grid;
+height: 116px;
+padding: 26px;
+align-self: stretch;
+grid-template-rows:  115.25px;
+grid-template-columns:    101.94px 101.94px 104.84px;
+border-top: 1px solid #CFCFCA;
+}
+
+.stat-block {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.stat-title {
+    color: #5F5F63;
+    font-family: Inter;
+    font-size: 11px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 19.25px; /* 175% */
+    letter-spacing: 1.54px;
+    text-transform: uppercase;
+}
+
+.stat-number {
+    color: #2B3FE0;
+    font-family: Inter;
+    font-size: 40px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 70px; /* 175% */
+    letter-spacing: -2px;
+}
+
+/* --- TAG PILLS --- */
+.tags-row {
+    display: flex;
+    flex-wrap: wrap; /* This allows items to sit side-by-side and wrap to the next line */
+    gap: 12px;
+    padding-top: 34px;
+    align-items: flex-start;
+    align-self: stretch;
+}
+
+.pill-tag {
+    /* Keep all your existing styles here */
+    display: inline-flex;
+    height: 41px;
+    padding: 0 16px;
+    align-items: center;
+    justify-content: center;
+    border-radius: 999px;
+    border: 1px solid #CFCFCA;
+    background: #F3F3F0;
+    font-size: 13px;
+    color: #151517;
+    
+    /* Add these two lines for smooth animation and interactivity */
+    transition: all 0.3s ease;
+    cursor: pointer; 
+}
+
+.pill-tag:hover {
+    background-color: #2B3FE0; /* Fills with your brand blue */
+    color: #ffffff; /* Changes text to white */
+    border-color: #2B3FE0; /* Updates the border to match */
+    transform: translateY(-2px); /* Adds a premium subtle lift */
+}
+
+
+.projects-section {
+    display: flex;
+    padding: 109.45px 79.6px;
+    flex-direction: column;
+    align-items: flex-start;
+    align-self: stretch;
+    background: radial-gradient(168.88% 117.16% at 12% 0%, rgba(43, 63, 224, 0.30) 0%, rgba(43, 63, 224, 0.00) 45.03%), #151517;
+    color: #F8F8F6;          /* NEW: light text on the dark background */
+}
+
+.projects-container {
+    width: 100%;
+    max-width: 836px;
+    min-height: 1216px;
+    margin: 0 auto;          /* centers the content on wide screens */
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    /* no background here anymore */
+}
+
+.works-label {
+    display: flex;
+    align-items: center;     /* centers the line with the text */
+    gap: 12px;               /* space between the line and the text */
+    margin-bottom: 24px;
+}
+
+.section-line {
+    width: 30px;
+    height: 1px;
+    background: #AAB4FF;
+}
+
+.works-container{
+display: flex;
+width: 836px;
+justify-content: space-between;
+align-items: flex-end;
+}
+
+.works {
+    color: #AAB4FF;
+    font-family: Inter;
+    font-size: 15px;
+    font-weight: 600;
+    line-height: 25.5px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+}
+
+.projects-head {
+    display: flex;
+    justify-content: space-between;   /* title left, description right */
+    align-items: flex-end;            /* bottoms line up */
+    width: 100%;
+    gap: 40px;
+    margin-bottom: 40px;              /* space before the cards */
+}
+
+.gallery-text{
+color: #F3F3F0;
+font-family: Inter;
+font-size: 49.75px;
+font-style: normal;
+font-weight: 700;
+line-height: 51.74px; /* 104% */
+letter-spacing: -2.736px;
+}
+
+
+.brief {
+    width: 430px;
+    color: #A4A4A9;
+    font-family: Inter;
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 25.5px;    /* 170% */
+}
+
+/* Two cards side by side: 406 + 24 + 406 = 836 */
+.gallery-container {
+    display: grid;                      /* your file also has "display: flex" and "inline-grid" here, so remove both */
+    width: 100%;
+    height: 1116px;                     /* 1052 from Figma + 64 top padding */
+    padding-top: 64px;
+    grid-template-columns: repeat(2, 406px);
+    grid-template-rows: repeat(3, 318.69px);
+    column-gap: 24px;
+    row-gap: 48px;
+    align-content: start;
+}
+
+.gallery-projects {
+    display: flex;
+    flex-direction: column;
+    width: 406px;
+    /* removed height: 254px, because the text under the card needs room */
+}
+
+/* The dark card */
+.project-thumb {
+    position: relative;
+    width: 406px;
+    height: 254px;
+    border-radius: 14px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    background: #232326;
+    overflow: hidden;
+    transition: transform 0.3s ease, border-color 0.3s ease;
+     background:
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='56' height='100' viewBox='0 0 56 100'%3E%3Cpath d='M28 66L0 50L0 16L28 0L56 16L56 50L28 66L28 100' fill='none' stroke='%23AAB4FF' stroke-opacity='0.06' stroke-width='1.5'/%3E%3Cpath d='M28 0L28 34L0 50L0 84L28 100L56 84L56 50L28 34' fill='none' stroke='%23AAB4FF' stroke-opacity='0.06' stroke-width='1.5'/%3E%3C/svg%3E") center / 56px 100px,
+        #232326;
+}
+
+
+.view-pill {
+    position: absolute;
+    right: 16px;
+    bottom: 16px;
+    padding: 8px 16px;
+    border-radius: 999px;
+    background: #2B3FE0;
+    color: #fff;
+    font-size: 12px;
+    font-weight: 600;
+    z-index: 3;
+    opacity: 0;
+    transform: translateY(10px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+.project-thumb:hover .view-pill {
+    opacity: 1;
+    transform: none;
+}
+
+
+.gallery-projects:hover .project-thumb {
+    transform: translateY(-4px);
+    border-color: #2B3FE0;
+}
+
+.project-thumb::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(
+        300px circle at var(--mx, 50%) var(--my, 50%),
+        rgba(43, 63, 224, 0.28),
+        transparent 70%
+    );
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.project-thumb::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    padding: 1.5px;                      /* ring thickness */
+    border-radius: inherit;
+    background: radial-gradient(
+        200px circle at var(--mx, 50%) var(--my, 50%),
+        rgba(170, 180, 255, 0.95),
+        transparent 70%
+    );
+    -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor;
+    mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+    mask-composite: exclude;             /* cuts out the middle, leaving only the ring */
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+    z-index: 2;
+}
+
+.project-thumb:hover::before,
+.project-thumb:hover::after {
+    opacity: 1;
+}
+
+/* keep the card text above the glow */
+.project-no,
+.coming-soon {
+    z-index: 1;
+}
+
+/* Text on the card */
+.project-no {
+    position: absolute;
+    top: 16px;
+    left: 16px;
+    font-size: 11px;
+    letter-spacing: 2px;
+    color: #7c7c83;
+}
+.coming-soon {
+    position: absolute;
+    left: 16px;
+    bottom: 16px;
+    font-size: 10px;
+    letter-spacing: 2px;
+    color: #7c7c83;
+}
+
+/* Text under the card */
+.project-meta {
+   display: flex;
+padding: 18px 4px 0 4px;
+justify-content: space-between;
+align-items: center;
+align-self: stretch;
+}
+
+
+.project-item {
+    color: #F3F3F0;
+font-family: Inter;
+font-size: 17px;
+font-style: normal;
+font-weight: 500;
+line-height: 25.5px; /* 150% */;
+}
