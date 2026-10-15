@@ -1,0 +1,287 @@
+/* =========================================================
+   dark.css  -  link this AFTER style.css
+   Dark mode: dark surfaces + every blue accent becomes red.
+   Nothing here changes the light theme (except the toggle button).
+   ========================================================= */
+
+/* ---------- Theme toggle button (shows in both modes) ---------- */
+.theme-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 1px solid rgba(0, 0, 0, 0.12);
+    background: transparent;
+    color: #151517;
+    font-size: 17px;
+    line-height: 1;
+    cursor: pointer;
+    transition: transform 0.3s ease, border-color 0.3s ease, background-color 0.3s ease;
+}
+.theme-toggle:hover {
+    transform: rotate(20deg) scale(1.08);
+    border-color: #2B3FE0;
+}
+.theme-toggle .icon-sun { display: none; }
+
+/* smooth fade when switching themes */
+body,
+.about-section,
+.journey-section,
+.contact-section,
+.site-footer {
+    transition: background-color 0.4s ease, color 0.4s ease;
+}
+
+/* ---------- Dark theme: palette ---------- */
+[data-theme="dark"] {
+    --red: #E0343F;          /* replaces brand blue  #2B3FE0 */
+    --red-deep: #B3202B;     /* replaces hover blue  #1a2a9c */
+    --red-soft: #FF9AA2;     /* replaces light blue  #AAB4FF */
+    --text: #F3F3F0;
+    --muted: #A4A4A9;
+    color-scheme: dark;      /* dark scrollbar */
+}
+
+/* toggle button: moon <-> sun */
+[data-theme="dark"] .theme-toggle {
+    color: var(--text);
+    border-color: rgba(255, 255, 255, 0.18);
+}
+[data-theme="dark"] .theme-toggle:hover { border-color: var(--red-soft); }
+[data-theme="dark"] .theme-toggle .icon-moon { display: none; }
+[data-theme="dark"] .theme-toggle .icon-sun { display: inline; }
+
+/* ---------- Page + navbar ---------- */
+[data-theme="dark"] body { background-color: #0E0E10; }
+
+[data-theme="dark"] header.main {
+    background-color: rgba(21, 21, 23, 0.85);
+    border-bottom-color: rgba(255, 255, 255, 0.06);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+}
+[data-theme="dark"] header.main.scrolled {
+    background-color: rgba(21, 21, 23, 0.95);
+    box-shadow: 0 4px 20px rgba(224, 52, 63, 0.18);
+}
+
+[data-theme="dark"] .logo-badge,
+[data-theme="dark"] .contact-btn { background-color: var(--red); }
+
+[data-theme="dark"] .contact-btn:hover {
+    background-color: var(--red-deep);
+    box-shadow: 0 8px 24px rgba(224, 52, 63, 0.4);
+}
+
+[data-theme="dark"] .logo-name { color: var(--text); }
+[data-theme="dark"] .logo-name::after,
+[data-theme="dark"] .nav-links a:not(.contact-btn)::after { background: var(--red-soft); }
+
+[data-theme="dark"] .nav-links a { color: var(--muted); }
+[data-theme="dark"] .nav-links a:not(.contact-btn):hover { color: var(--red-soft); }
+
+/* ---------- Hero ---------- */
+/* red honeycomb (masks and animation stay as they are) */
+[data-theme="dark"] .hero::before {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='56' height='100' viewBox='0 0 56 100'%3E%3Cpath d='M28 66L0 50L0 16L28 0L56 16L56 50L28 66L28 100' fill='none' stroke='%23E0343F' stroke-opacity='0.3' stroke-width='1.5'/%3E%3Cpath d='M28 0L28 34L0 50L0 84L28 100L56 84L56 50L28 34' fill='none' stroke='%23E0343F' stroke-opacity='0.3' stroke-width='1.5'/%3E%3C/svg%3E");
+}
+
+/* cursor glow turns red */
+[data-theme="dark"] .hero::after {
+    background: radial-gradient(
+        circle 260px at var(--x, 75%) var(--y, 45%),
+        rgba(224, 52, 63, 0.22) 0%,
+        transparent 70%
+    );
+}
+
+[data-theme="dark"] .hero-panel { background: #1C1C1F; }
+
+[data-theme="dark"] .home-desit,
+[data-theme="dark"] .home-text h4 { color: var(--red-soft); }
+[data-theme="dark"] .home-firstname { color: var(--text); }
+[data-theme="dark"] .home-lastname { color: var(--red); }
+[data-theme="dark"] .tagline { color: var(--muted); }
+[data-theme="dark"] .cta-link { color: var(--text); }
+
+[data-theme="dark"] .decorative-outline {
+    border-top-color: var(--red);
+    border-right-color: var(--red);
+}
+
+[data-theme="dark"] .internship-badge {
+    background: #1E1E21;
+    color: var(--text);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.45);
+}
+[data-theme="dark"] .badge-icon-wrapper { background-color: rgba(224, 52, 63, 0.25); }
+[data-theme="dark"] .internship-badge .dot {
+    background-color: var(--red);
+    animation-name: pulse-red;
+}
+[data-theme="dark"] .image-footer { color: #7c7c83; }
+
+[data-theme="dark"] .home-image-container::after {
+    background: linear-gradient(135deg, var(--red-soft), var(--red));
+}
+
+/* red pulse (the blue "pulse" keyframes stay for light mode) */
+@keyframes pulse-red {
+    0%   { box-shadow: 0 0 0 0 rgba(224, 52, 63, 0.55); }
+    70%  { box-shadow: 0 0 0 10px rgba(224, 52, 63, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(224, 52, 63, 0); }
+}
+
+/* ---------- Skills banner ---------- */
+[data-theme="dark"] .skills-banner { background-color: var(--red); }
+[data-theme="dark"] .star { color: #FFD0D3; }
+
+/* ---------- About + Journey ---------- */
+[data-theme="dark"] .about-section,
+[data-theme="dark"] .journey-section { background: #131315; }
+
+/* red honeycomb in the corners */
+[data-theme="dark"] .about-section::before,
+[data-theme="dark"] .journey-section::before {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='56' height='100' viewBox='0 0 56 100'%3E%3Cpath d='M28 66L0 50L0 16L28 0L56 16L56 50L28 66L28 100' fill='none' stroke='%23E0343F' stroke-opacity='0.16' stroke-width='1.5'/%3E%3Cpath d='M28 0L28 34L0 50L0 84L28 100L56 84L56 50L28 34' fill='none' stroke='%23E0343F' stroke-opacity='0.16' stroke-width='1.5'/%3E%3C/svg%3E");
+}
+
+[data-theme="dark"] .section-label { color: var(--red-soft); }
+[data-theme="dark"] .label-line { background-color: var(--red-soft); }
+
+[data-theme="dark"] .about-left-text,
+[data-theme="dark"] .about-right1,
+[data-theme="dark"] .journey-left-text1,
+[data-theme="dark"] .journey-head1 { color: var(--text); }
+
+[data-theme="dark"] .about-right2,
+[data-theme="dark"] .about-right p,
+[data-theme="dark"] .journey-right-text1,
+[data-theme="dark"] .stat-title { color: var(--muted); }
+
+[data-theme="dark"] .stats-row { border-top-color: rgba(255, 255, 255, 0.1); }
+[data-theme="dark"] .stat-number { color: var(--red); }
+
+[data-theme="dark"] .pill-tag {
+    background: #1C1C1F;
+    border-color: rgba(255, 255, 255, 0.1);
+    color: var(--text);
+}
+[data-theme="dark"] .pill-tag:hover {
+    background-color: var(--red);
+    border-color: var(--red);
+    color: #fff;
+}
+
+/* timeline */
+[data-theme="dark"] .timeline-item { border-top-color: rgba(255, 255, 255, 0.1); }
+[data-theme="dark"] .timeline-dot {
+    background: var(--red);
+    box-shadow: 0 0 0 4px rgba(224, 52, 63, 0.2);
+    animation-name: pulse-red;
+}
+[data-theme="dark"] .timeline-item:hover .timeline-dot {
+    box-shadow: 0 0 0 7px rgba(224, 52, 63, 0.2);
+}
+[data-theme="dark"] .journey-date { color: var(--red-soft); }
+[data-theme="dark"] .timeline-item:hover .journey-head1 { color: var(--red-soft); }
+
+/* ---------- Projects / Gallery ---------- */
+[data-theme="dark"] .projects-section {
+    background:
+        radial-gradient(168.88% 117.16% at 12% 0%, rgba(224, 52, 63, 0.30) 0%, rgba(224, 52, 63, 0) 45.03%),
+        #151517;
+}
+
+[data-theme="dark"] .works { color: var(--red-soft); }
+[data-theme="dark"] .section-line { background: var(--red-soft); }
+
+/* faint honeycomb inside each card, now pink */
+[data-theme="dark"] .project-thumb {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='56' height='100' viewBox='0 0 56 100'%3E%3Cpath d='M28 66L0 50L0 16L28 0L56 16L56 50L28 66L28 100' fill='none' stroke='%23FF9AA2' stroke-opacity='0.06' stroke-width='1.5'/%3E%3Cpath d='M28 0L28 34L0 50L0 84L28 100L56 84L56 50L28 34' fill='none' stroke='%23FF9AA2' stroke-opacity='0.06' stroke-width='1.5'/%3E%3C/svg%3E");
+}
+
+[data-theme="dark"] .gallery-projects:hover .project-thumb { border-color: var(--red); }
+
+/* inner glow that follows the cursor */
+[data-theme="dark"] .project-thumb::before {
+    background: radial-gradient(
+        300px circle at var(--mx, 50%) var(--my, 50%),
+        rgba(224, 52, 63, 0.28),
+        transparent 70%
+    );
+}
+
+/* border ring glow */
+[data-theme="dark"] .project-thumb::after {
+    background: radial-gradient(
+        200px circle at var(--mx, 50%) var(--my, 50%),
+        rgba(255, 154, 162, 0.95),
+        transparent 70%
+    );
+}
+
+[data-theme="dark"] .view-pill { background: var(--red); }
+
+/* ---------- Contact ---------- */
+[data-theme="dark"] .contact-section { background: #1A1A1D; }
+
+/* top fade into the section above */
+[data-theme="dark"] .contact-section::before {
+    background: linear-gradient(#131315, rgba(19, 19, 21, 0));
+}
+
+[data-theme="dark"] .contact-circle-fill { background: rgba(224, 52, 63, 0.18); }
+[data-theme="dark"] .contact-circle-outline { border-color: rgba(224, 52, 63, 0.4); }
+
+[data-theme="dark"] .contact-label { color: var(--red-soft); }
+[data-theme="dark"] .contact-title { color: var(--text); }
+[data-theme="dark"] .contact-text { color: var(--muted); }
+
+[data-theme="dark"] .contact-cta {
+    background: var(--red);
+    border-color: var(--red);
+}
+[data-theme="dark"] .contact-cta:hover {
+    background: var(--red-deep);
+    border-color: var(--red-deep);
+    box-shadow: 0 10px 26px rgba(224, 52, 63, 0.4);
+}
+
+/* outlined buttons (must stay AFTER the two rules above) */
+[data-theme="dark"] .contact-cta-outline {
+    background: transparent;
+    color: var(--red-soft);
+}
+[data-theme="dark"] .contact-cta-outline:hover {
+    background: var(--red);
+    border-color: var(--red);
+    color: #fff;
+}
+
+[data-theme="dark"] .contact-status {
+    background: rgba(74, 222, 128, 0.1);
+    border-color: rgba(74, 222, 128, 0.3);
+    color: #4ADE80;          /* lighter green so it reads on dark */
+}
+
+[data-theme="dark"] .copy-email {
+    border-color: rgba(255, 154, 162, 0.4);
+    color: var(--muted);
+}
+[data-theme="dark"] .copy-email span { color: var(--red-soft); }
+[data-theme="dark"] .copy-email:hover {
+    background: rgba(224, 52, 63, 0.1);
+    border-color: var(--red-soft);
+}
+
+/* ---------- Footer ---------- */
+[data-theme="dark"] .site-footer { background: #0A0A0B; }
+[data-theme="dark"] .footer-links a:hover { color: var(--red-soft); }
+
+/* ---------- Small screens ---------- */
+@media (max-width: 560px) {
+    .theme-toggle { width: 34px; height: 34px; font-size: 15px; }
+}

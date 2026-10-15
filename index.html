@@ -8,22 +8,28 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Caveat:wght@700&family=Dancing+Script:wght@700&family=Satisfy&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="darkmode.css">
     <title>Domondon | Portfolio</title>
 </head>
 <body>
     <header class="main">
         <div class="logo-wrapper">
-            <div class="logo-badge">JSD.</div>
+            <div class="logo-badge">DOM.</div>
             <a href="#" class="logo-name">Domondon | Portfolio</a>
         </div>
         
         <nav class="nav-links">
-    <!-- Change the href to match the section ID -->
-    <a href="#about" class="nav-btn">About</a> 
+    <a href="#about" class="nav-btn">About</a>
     <a href="#Projects" class="nav-btn">Projects</a>
-    <a href="#" class="nav-btn">Journey</a>
+    <a href="#journey" class="nav-btn">Journey</a>
     <a href="#contact" class="contact-btn">Contact</a>
-    </nav>
+
+    <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
+        <span class="icon-moon">☾</span>
+        <span class="icon-sun">☀</span>
+    </button>
+</nav>
 
     </header>
 
@@ -239,6 +245,92 @@
 </section>
 
 
+<section class="journey-section" id="journey">
+    <div class="journey-container">
+
+        <!-- Left column -->
+        <div class="journey-left">
+            <div class="section-label">
+                <span class="label-line"></span> MY JOURNEY
+            </div>
+            <h2 class="journey-left-text1">Experience &amp;<br>Education</h2>
+        </div>
+
+        <!-- Right column: timeline -->
+        <div class="timeline">
+
+            <div class="timeline-item">
+                <span class="timeline-dot"></span>
+                <h4 class="journey-date">2026 — PRESENT</h4>
+                <h3 class="journey-head1">B.S. Information Technology</h3>
+                <p class="journey-right-text1">
+                    First-year student at the University of Makati, focusing on UI/UX design, web development, and human-computer interaction. Building a foundation in modern front-end frameworks and design systems.
+                </p>
+            </div>
+
+            <div class="timeline-item">
+                <span class="timeline-dot"></span>
+                <h4 class="journey-date">2025 — 2026</h4>
+                <h3 class="journey-head1">Senior High School — STEM Track</h3>
+                <p class="journey-right-text1">
+                    Built a strong foundation in science, technology, and analytical thinking. Applied creative problem-solving to real-world projects, fueling a passion for design and digital innovation.
+                </p>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<section class="contact-section" id="contact">
+    <div class="contact-circle-fill"></div>
+    <div class="contact-circle-outline"></div>
+
+    <div class="contact-content">
+        <div class="contact-status">
+            <span class="status-dot"></span> Available for internships
+        </div>
+
+        <span class="contact-label">HAVE SOMETHING IN MIND?</span>
+        <h2 class="contact-title">Let's build something<br>amazing together.</h2>
+        <p class="contact-text">
+            Whether you have a project in mind or just want to chat about design, I'm always open to new opportunities and collaborations.
+        </p>
+
+        <div class="contact-actions">
+            <a href="mailto:johnshanteldomondon@gmail.com" class="contact-cta">SEND ME AN EMAIL</a>
+            <a href="https://www.facebook.com/johnshantel.domondon" class="contact-cta contact-cta-outline" target="_blank" rel="noopener noreferrer">FACEBOOK</a>
+            <a href="https://github.com/domsblvd" class="contact-cta contact-cta-outline" target="_blank" rel="noopener noreferrer">GITHUB</a>
+        </div>
+         <button class="copy-email" id="copyEmail" data-email="johnshanteldomondon@gmail.com">
+        johnshanteldomondon@gmail.com<span>Copy</span>
+            </button>
+
+    </div>
+</section>
+
+<footer class="site-footer">
+    <p class="footer-copy">© 2026 John Shantel Domondon. All rights reserved.</p>
+    <nav class="footer-links">
+        <a href="https://www.facebook.com/johnshantel.domondon" target="_blank" rel="noopener noreferrer">Facebook</a>
+        <a href="mailto:johnshanteldomondon@gmail.com">Email</a>
+        <a href="https://github.com/domsblvd" target="_blank" rel="noopener noreferrer">GitHub</a>
+    </nav>
+</footer>
+
+
+<script>
+  const savedTheme = localStorage.getItem('theme');
+  if (savedTheme) document.documentElement.setAttribute('data-theme', savedTheme);
+
+  const themeBtn = document.getElementById('themeToggle');
+themeBtn.addEventListener('click', () => {
+  const root = document.documentElement;
+  const next = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+  root.setAttribute('data-theme', next);
+  localStorage.setItem('theme', next);
+});
+</script>
+
 
 <script>
   const hero = document.querySelector('.hero');
@@ -282,6 +374,25 @@ document.querySelectorAll('.project-thumb').forEach((card) => {
   });
 });
 
+
+const revealObserver = new IntersectionObserver((entries) => {
+  entries.forEach((entry) => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+      revealObserver.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.15 });
+
+document.querySelectorAll('.reveal').forEach((el) => revealObserver.observe(el));
+
+const copyBtn = document.getElementById('copyEmail');
+copyBtn.addEventListener('click', () => {
+  navigator.clipboard.writeText(copyBtn.dataset.email);
+  const label = copyBtn.querySelector('span');
+  label.textContent = 'Copied!';
+  setTimeout(() => (label.textContent = 'Copy'), 1500);
+});
 </script>   
 
 </body>

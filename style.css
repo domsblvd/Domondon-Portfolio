@@ -912,6 +912,376 @@ font-weight: 500;
 line-height: 25.5px; /* 150% */;
 }
 
+/* --- JOURNEY SECTION --- */
+.journey-section {
+    width: 100%;
+    background: #F8F8F6;
+    scroll-margin-top: 84px;          /* so the sticky navbar doesn't cover it */
+}
+
+/* Same pattern as .about-container, so both sections line up */
+.journey-container {
+    display: grid;
+    max-width: 1050px;
+    margin: 0 auto;                   /* centers the block */
+    padding: 130px 40px;
+    grid-template-columns: 1fr 1.2fr;
+    column-gap: 80px;
+    align-items: start;
+}
+
+/* Left */
+.journey-left-text1 {
+    color: #151517;
+    font-family: Inter;
+    font-size: 49.75px;
+    font-weight: 700;
+    line-height: 51.74px;
+    letter-spacing: -2.736px;
+}
+
+/* Right: timeline */
+.timeline {
+    display: flex;
+    flex-direction: column;
+}
+
+.timeline-item {
+    position: relative;
+    border-top: 1px solid #DCDDD8;
+    padding: 44px 0 48px 42px;        /* 42px on the left makes room for the dot */
+}
+
+.timeline-dot {
+    position: absolute;
+    left: 0;                          /* was -30px, which pushed it outside */
+    top: 49px;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #2B3FE0;
+    box-shadow: 0 0 0 4px rgba(43, 63, 224, 0.15);
+    animation: pulse 1s infinite;
+}
+
+@keyframes pulse {
+    0%   { box-shadow: 0 0 0 0 rgba(18, 48, 227, 0.5); }
+    70%  { box-shadow: 0 0 0 10px rgba(18, 48, 227, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(18, 48, 227, 0); }
+}
+  
+.journey-date {
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    color: #2B3FE0;
+    margin-bottom: 14px;
+}
+
+.journey-head1 {
+    font-size: 22px;
+    font-weight: 700;
+    line-height: 1.3;
+    color: #151517;
+    margin-bottom: 12px;
+}
+
+.journey-right-text1 {
+    font-size: 16px;
+    line-height: 1.7;
+    color: #5F5F63;
+    max-width: 430px;
+}   
+
+.about-section,
+.journey-section {
+    position: relative;
+    overflow: hidden;
+}
+
+.about-section::before,
+.journey-section::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    width: 55%;
+    height: 100%;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='56' height='100' viewBox='0 0 56 100'%3E%3Cpath d='M28 66L0 50L0 16L28 0L56 16L56 50L28 66L28 100' fill='none' stroke='%232B3FE0' stroke-opacity='0.12' stroke-width='1.5'/%3E%3Cpath d='M28 0L28 34L0 50L0 84L28 100L56 84L56 50L28 34' fill='none' stroke='%232B3FE0' stroke-opacity='0.12' stroke-width='1.5'/%3E%3C/svg%3E");
+    background-size: 84px 150px;
+    pointer-events: none;
+}
+
+/* About: top-right corner */
+.about-section::before {
+    right: 0;
+    -webkit-mask-image: linear-gradient(to bottom left, #000 0%, transparent 60%);
+    mask-image: linear-gradient(to bottom left, #000 0%, transparent 60%);
+}
+
+/* Journey: bottom-left corner */
+.journey-section::before {
+    left: 0;
+    -webkit-mask-image: linear-gradient(to top right, #000 0%, transparent 60%);
+    mask-image: linear-gradient(to top right, #000 0%, transparent 60%);
+}
+
+/* keep the content above the pattern */
+.about-container,
+.journey-container {
+    position: relative;
+    z-index: 1;
+}
+
+.reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.reveal.visible {
+    opacity: 1;
+    transform: none;
+}
+.timeline-item:nth-child(2).reveal { transition-delay: 0.15s; }
+
+.timeline-dot {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.timeline-item:hover .timeline-dot {
+    transform: scale(1.5);
+    box-shadow: 0 0 0 7px rgba(43, 63, 224, 0.15);
+}
+.journey-head1 {
+    transition: color 0.3s ease;
+}
+.timeline-item:hover .journey-head1 {
+    color: #2B3FE0;
+}
+
+.projects-section {
+    border-radius: 48px;
+    margin: 0 24px;
+}
+
+/* --- CONTACT SECTION --- */
+.contact-section {
+    position: relative;
+    overflow: hidden;
+    background: #DCDDD8;
+    padding: 150px 40px;
+    scroll-margin-top: 84px;
+}
+
+/* About: top-right */
+.about-section::before {
+    right: 0;
+    -webkit-mask-image: radial-gradient(ellipse 100% 45% at 100% 50%, #000 0%, transparent 100%);
+    mask-image: radial-gradient(ellipse 100% 45% at 100% 50%, #000 0%, transparent 100%);
+}
+
+/* Journey: left side */
+.journey-section::before {
+    left: 0;
+    -webkit-mask-image: radial-gradient(ellipse 100% 45% at 0% 50%, #000 0%, transparent 100%);
+    mask-image: radial-gradient(ellipse 100% 45% at 0% 50%, #000 0%, transparent 100%);
+} 
+
+.contact-section::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 140px;
+      background: linear-gradient(#F8F8F6, rgba(248, 248, 246, 0));
+      pointer-events: none;
+  }
+
+/* Filled circle, top-left, partly cut off */
+.contact-circle-fill {
+    position: absolute;
+    top: -150px;
+    left: -110px;
+    width: 420px;
+    height: 420px;
+    border-radius: 50%;
+    background: #CBCEDF;
+    pointer-events: none;
+}
+
+/* Outline circle, bottom-right, partly cut off */
+.contact-circle-outline {
+    position: absolute;
+    right: -170px;
+    bottom: -300px;
+    width: 460px;
+    height: 460px;
+    border-radius: 50%;
+    border: 1px solid rgba(43, 63, 224, 0.35);
+    pointer-events: none;
+}
+
+.contact-content {
+    position: relative;
+    z-index: 1;
+    max-width: 720px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.contact-label {
+    color: #2B3FE0;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 2.5px;
+    margin-bottom: 22px;
+}
+
+.contact-title {
+    color: #151517;
+    font-size: 72px;
+    font-weight: 700;
+    line-height: 1;
+    letter-spacing: -3px;
+    margin-bottom: 28px;
+}
+
+.contact-text {
+    max-width: 560px;
+    color: #5F5F63;
+    font-size: 16px;
+    line-height: 28px;
+    margin-bottom: 36px;
+}
+
+/* Row that holds the three buttons */
+.contact-actions {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 14px;
+}
+
+/* Main (filled) button */
+.contact-cta {
+    display: inline-flex;
+    align-items: center;
+    padding: 16px 34px;
+    border-radius: 999px;
+    background: #2B3FE0;
+    color: #fff;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    text-decoration: none;
+    border: 1.5px solid #2B3FE0;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease, color 0.3s ease;
+}
+
+.contact-cta:hover {
+    background: #1a2a9c;
+    border-color: #1a2a9c;
+    transform: translateY(-3px);
+    box-shadow: 0 10px 26px rgba(43, 63, 224, 0.35);
+}
+
+/* Outlined buttons (Facebook, GitHub) */
+.contact-cta-outline {
+    background: transparent;
+    color: #2B3FE0;
+}
+
+.contact-cta-outline:hover {
+    background: #2B3FE0;
+    border-color: #2B3FE0;
+    color: #fff;
+}
+
+/* --- FOOTER --- */
+.site-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 36px 80px;
+    background: #151517;
+}
+
+.footer-copy {
+    color: #A4A4A9;
+    font-size: 12px;
+}
+
+.footer-links {
+    display: flex;
+    gap: 28px;
+}
+
+.footer-links a {
+    color: #A4A4A9;
+    font-size: 12px;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.footer-links a:hover {
+    color: #AAB4FF;
+}
+
+.contact-status {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 24px;
+    padding: 8px 16px;
+    border-radius: 999px;
+    background: rgba(34, 197, 94, 0.12);
+    border: 1px solid rgba(34, 197, 94, 0.3);
+    font-size: 13px;
+    font-weight: 600;
+    color: #15803D;                 /* dark green text so it stays readable */
+    box-shadow: none;
+}
+
+.status-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #22C55E;
+    animation: pulse-green 1.5s infinite;
+}
+
+@keyframes pulse-green {
+    0%   { box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.55); }
+    70%  { box-shadow: 0 0 0 9px rgba(34, 197, 94, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(34, 197, 94, 0); }
+}
+
+.copy-email {
+    margin-top: 22px;
+    display: inline-flex;
+    gap: 12px;
+    align-items: center;
+    padding: 10px 18px;
+    border: 1px dashed rgba(43, 63, 224, 0.4);
+    border-radius: 12px;
+    background: transparent;
+    color: #5F5F63;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+.copy-email span {
+    color: #2B3FE0;
+    font-weight: 600;
+}
+.copy-email:hover {
+    background: rgba(43, 63, 224, 0.08);
+    border-color: #2B3FE0;
+}
+
+
 /* ---------- Tablet & phone ---------- */
 @media (max-width: 900px) {
   header.main { padding: 0 24px; }
@@ -995,6 +1365,13 @@ line-height: 25.5px; /* 150% */;
 
   .track-text { font-size: 22px; }       /* smaller marquee text */
   .skills-banner { padding: 16px 0; }
+
+  .journey-container {
+    grid-template-columns: 1fr;
+    padding: 80px 24px;
+    row-gap: 48px;
+}
+.journey-left-text1 { font-size: 40px; line-height: 1.05; }
 }
 
 /* Touch screens can't hover, so show the "View project" pill always */
