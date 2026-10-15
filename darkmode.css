@@ -135,7 +135,7 @@ body,
 }
 
 /* ---------- Skills banner ---------- */
-[data-theme="dark"] .skills-banner { background-color: var(--red); }
+[data-theme="dark"] .skills-banner { background-color:  var(--red); }
 [data-theme="dark"] .star { color: #FFD0D3; }
 
 /* ---------- About + Journey ---------- */
