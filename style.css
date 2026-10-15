@@ -1256,7 +1256,7 @@ line-height: 25.5px; /* 150% */;
     0%   { box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.55); }
     70%  { box-shadow: 0 0 0 9px rgba(34, 197, 94, 0); }
     100% { box-shadow: 0 0 0 0 rgba(34, 197, 94, 0); }
-}
+}   
 
 .copy-email {
     margin-top: 22px;
