@@ -281,6 +281,15 @@ body,
 [data-theme="dark"] .site-footer { background: #0A0A0B; }
 [data-theme="dark"] .footer-links a:hover { color: var(--red-soft); }
 
+[data-theme="dark"] .build-text {
+    color: #4ADE80;
+}
+
+[data-theme="dark"] .build-text {
+    color: #4ADE80;
+    text-shadow: 0 0 24px rgba(74, 222, 128, 0.35);
+}
+
 /* ---------- Small screens ---------- */
 @media (max-width: 560px) {
     .theme-toggle { width: 34px; height: 34px; font-size: 15px; }

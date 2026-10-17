@@ -686,7 +686,6 @@ border-top: 1px solid #CFCFCA;
     transform: translateY(-2px); /* Adds a premium subtle lift */
 }
 
-
 .projects-section {
     display: flex;
     padding: 109.45px 79.6px;
@@ -1057,10 +1056,7 @@ line-height: 25.5px; /* 150% */;
     color: #2B3FE0;
 }
 
-.projects-section {
-    border-radius: 48px;
-    margin: 0 24px;
-}
+
 
 /* --- CONTACT SECTION --- */
 .contact-section {
@@ -1281,6 +1277,9 @@ line-height: 25.5px; /* 150% */;
     border-color: #2B3FE0;
 }
 
+.build-text{
+    color: #15803D;
+}
 
 /* ---------- Tablet & phone ---------- */
 @media (max-width: 900px) {
