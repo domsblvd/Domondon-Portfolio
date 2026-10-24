@@ -150,6 +150,7 @@ body,
 
 [data-theme="dark"] .section-label { color: var(--red-soft); }
 [data-theme="dark"] .label-line { background-color: var(--red-soft); }
+[data-theme="dark"] .skill-label { color: var(--red-soft); }
 
 [data-theme="dark"] .about-left-text,
 [data-theme="dark"] .about-right1,
@@ -163,6 +164,24 @@ body,
 
 [data-theme="dark"] .stats-row { border-top-color: rgba(255, 255, 255, 0.1); }
 [data-theme="dark"] .stat-number { color: var(--red); }
+
+[data-theme="dark"] .skill-logo {
+    background: #1C1C1F;
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+[data-theme="dark"] .skill-logo span {
+    color: var(--muted);
+}
+
+[data-theme="dark"] .skill-logo:hover {
+    border-color: var(--red);
+    box-shadow: 0 10px 24px rgba(224, 52, 63, 0.25);
+}
+
+[data-theme="dark"] .skill-logo:hover span {
+    color: var(--red-soft);
+}
 
 [data-theme="dark"] .pill-tag {
     background: #1C1C1F;
